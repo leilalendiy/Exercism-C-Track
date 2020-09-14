@@ -1,18 +1,16 @@
 #include "acronym.h"
-#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+
+char copy[100];
 
 char *abbreviate(const char *phrase) {
     if (phrase == NULL || strlen(phrase) == 0) {
         return NULL;
     }
 
-    int length = strlen(phrase);
-    char *acronym = malloc(length);
-
-    char *copy = malloc(sizeof(char) * length);
+    char *acronym = calloc(strlen(phrase)/2, sizeof(char));
     strcpy(copy, phrase);
 
     char *token = strtok(copy, " -:,");
